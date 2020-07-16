@@ -1,0 +1,1 @@
+### A CNN that detects whether or not a skin lesion is malignant or benign.
