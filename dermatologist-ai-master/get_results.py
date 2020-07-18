@@ -83,7 +83,7 @@ if __name__ == "__main__":
     if len(sys.argv)==3:
         thresh = float(sys.argv[2])
     else:
-        thresh = 0.5
+        thresh = 0.4
 
     # get ground truth labels for test dataset
     truth = pd.read_csv('ground_truth.csv')
