@@ -1,5 +1,6 @@
-/train/*/*.jpg
-/valid/*/*.jpg
-/test/*/*.jpg
+
 /merged_train_valid/*/*
-/data/*/*/*
+
+/jupyter notebooks for model training/data/*/*/*
+/jupyter notebooks for model training/train/*/*
+/jupyter notebooks for model training/valid/*/*
