@@ -1,5 +1,3 @@
 /train/*/*.jpg
 /valid/*/*.jpg
 /test/*/*.jpg
-/data/*/*
-/merged_train_valid/*/*
