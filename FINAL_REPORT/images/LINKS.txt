@@ -1,0 +1,7 @@
+links:
+[3] https://arxiv.org/abs/1905.11946
+[4] https://github.com/lukemelas/EfficientNet-PyTorch
+[5]https://paperswithcode.com/sota/image-classification-on-imagenet
+[6] https://ai.googleblog.com/2019/05/efficientnet-improving-accuracy-and.html
+[7]https://arxiv.org/abs/1412.6980
+[8]https://medium.com/octavian-ai/which-optimizer-and-learning-rate-should-i-use-for-deep-learning-5acb418f9b2
