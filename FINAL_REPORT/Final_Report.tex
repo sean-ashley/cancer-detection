@@ -8,6 +8,7 @@
     \ifPDFTeX
     	\usepackage[T1]{fontenc}
     	\usepackage{mathpazo}
+
     \else
     	\usepackage{fontspec}
     \fi
@@ -65,7 +66,7 @@
     \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
                                 % normalem makes italics be italics, not underlines
     \usepackage{mathrsfs}
-    
+    \usepackage{tabto}
 
     
     % Colors for the hyperref package
@@ -148,7 +149,7 @@
     % Document parameters
     % Document title
     \title{Digitalizing Skin Cancer Detection with
-PyTorch.}
+PyTorch}
     
     
     
@@ -388,19 +389,19 @@ Figure \ref{fig:melanoma} Picture of Melanoma.
     \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Skin cancer is the most common form of cancer, with 1 in 5 Americans
-developping it by the time they reach 70 years old. Over 2 people die of
-skin cancer in the US every hour\textsuperscript{\hyperlink{[1]}{[1]}}. Early detection is key in
-saving lives, with the early detection 5 year survival rate fo skin
-cancer being 99\%\textsuperscript{\hyperlink{[1]}{[1]}}. Dermatologist have to look at patients one by
+\qquad Skin cancer is the most common form of cancer, with 1 in 5 Americans
+developing it by the time they reach 70 years old. More then 2 people die of
+skin cancer in the US every hour\textsuperscript{\hyperlink{[1]}{[1]}}. Early detection is key to
+saving lives, with the early detection 5 year survival rate of skin
+cancer being 99\%\textsuperscript{\hyperlink{[1]}{[1]}}. Dermatologists have to look at patients one by
 one, and must assess by eye whether or not a blemish is malignant or
-benign. Dermatologist's have around a 66\% accuracy rate in assessing
-752 different skin diseases, while CNN's, such as the one detailed in
+benign. Dermatologists have around a 66\% accuracy rate in assessing
+752 different skin diseases, while Covolutional Neural Networks, such as the one detailed in
 \emph{Dermatologist-level classification of skin cancer with deep neural
 networks} published in Nature have achieved greater accuracy levels
-then dermatologist's, around 72.1\%\textsuperscript{\hyperlink{[2]}{[2]}}.
+then dermatologists, around 72.1\%\textsuperscript{\hyperlink{[2]}{[2]}}.
 
-By converting cancer detection to easily deployable software, you could
+\qquad By converting cancer detection to easily deployable software, you could
 allow people to get accurate cancer testing at home, saving resources
 and time. By making cancer detection more accesible, people would be
 more likely to get tested, saving lives in the process. Below I will
@@ -414,10 +415,10 @@ Convolutional Neural Networks.
     \hypertarget{dataset}{%
 \subsubsection{Dataset}\label{dataset}}
 
-The dataset that was used was retrieved from Udacity's Dermatologist AI
+\qquad The dataset that was used was retrieved from Udacity's Dermatologist AI
 mini project. The training set contains 374 pictures of labelled images
-of melanoma, 1372 labelled image of nevus, and 254 labelled images of
-seborrheic keratosis. The validation and testing set each contain about
+of melanoma(skin cancer), 1372 labelled image of nevus(a benign blemish), and 254 labelled images of
+seborrheic keratosis(a benign blemish). The validation and testing set each contain about
 20\% of the total images in the training set with similiar ratios of
 melanoma to nevus to seborrheic keratosis. The image was loaded into
 PyTorch using the ImageFolder class.
@@ -425,7 +426,7 @@ PyTorch using the ImageFolder class.
 \hypertarget{model-architecture}{%
 \subsubsection{Model Architecture}\label{model-architecture}}
 
-The model architecture that was used was the EfficientNet model detailed
+\qquad The model architecture that was used was the EfficientNet model detailed
 in the article \emph{EfficientNet: Rethinking Model Scaling for
 Convolutional Neural Networks} by Mingxing Tan, and Quoc V. Le\textsuperscript{\hyperlink{[3]}{[3]}}.
 This architecture was chosen because it is among the highest ranking
@@ -452,7 +453,7 @@ Figure \ref{fig:EffNet} EfficientNet Model Architecture\textsuperscript{\hyperli
 \hypertarget{optimizer}{%
 \subsubsection{Optimizer}\label{optimizer}}
 
-The optimizer that was selected was the Adam optimizer, as detailed in
+\qquad The optimizer that was selected was the Adam optimizer, as detailed in
 the article \emph{Adam: A Method for Stochastic Optimization} by
 Diederik P. Kingma, and Jimmy Ba\textsuperscript{\hyperlink{[7]}{[7]}}. The Adam optimizer was chosen
 because it consistently performs the highest out of all the PyTorch
@@ -470,16 +471,19 @@ Figure \ref{fig:Adam} Performance of Adam Optimizer vs Other Common Optimizers\t
 \hypertarget{loss-function}{%
 \subsubsection{Loss Function}\label{loss-function}}
 
-The loss function that was chosen was Cross Entropy loss. Cross Entropy
+\qquad The loss function that was chosen was Cross Entropy loss. Cross Entropy
 loss was chosen because it is simple to use and effective, with high
-Performance. \#\#\# Data Augmentation Using the PyTorch.transforms
+performance. Data Augmentation using the PyTorch.transforms
 functions, all of the images were cropped to 299x299 as it allowed the
 model to run at a reasonable speed while attaining good results. All of
-the images were normalized according to the \emph{ImageNet} values. The
-training set was augmented using random rotations, vertical
-flips,horizontal flips, and crops from the default PyTorch transforms
+the images were normalized according to the \emph{ImageNet} values.
+\hypertarget{Data Augmentation}{%
+\subsubsection{Data Augmentation}\label{Data Augmentation}}
+
+\qquad The training set was augmented using random rotations, vertical
+flips, horizontal flips, and crops from the default PyTorch transforms
 library. Other transforms were tried, such as no augmentation, random
-affline, gaussian blur, increased noise, and random perspective, but all
+affline, gaussian blur, increased noise, and random perspective; however, all
 resulted in worse accuracy than the augmentation that was used.
 
 
@@ -495,11 +499,11 @@ Figure \ref{fig:Aug_Img} Resulting Images from Applied Data Augmentation.
 \subsubsection{Number of Epochs and Early
 Stopping}\label{number-of-epochs-and-early-stopping}}
 
-I implemented early stopping functionality into my model to insure that
+\qquad I implemented early stopping functionality into my model to ensure that
 no time was wasted during training. By stopping the training loop after
 6 epochs of no improvment on validation loss, I ensured that I was not
 wasting time training my model just to overfit the data set.
-Additionaly, the model was only saved if it achieved a new best score in
+Additionally, the model was only saved if it achieved a new best score in
 validation loss. Implementing early stopping also allowed me to set a
 large amount of epochs and not have to worry about my code running for
 too long, as I knew it would just keep going until it was not improving
@@ -512,19 +516,24 @@ anymore.
 \subsubsection{Final Validation Loss and Test
 Accuracy}\label{final-validation-loss-and-test-accuracy}}
 
-The model ended up training for 10 epochs and achieved a validation loss
+\qquad The final model ended up training for 10 epochs and achieved a validation loss
 of 0.513393, which was the lowest validation loss of any model tested.
 The testing accuracy of the model ended up being 76\%, correctly
 classifying 456/600 images. This is notably higher then the
 dermatologist rating of 66\%, though with notably fewer classes (752 vs
-3). \#\#\# ROC Curve The ROC Curve of the model points out a glaring
+3).  
+
+\hypertarget{ROC Curve}{%
+\subsubsection{ROC Curve}\label{ROC Curve}}
+
+\qquad  The ROC Curve of the model points out a glaring
 fault. The model does exceedingly well at correctly classfying benign
 lesions from melanoma as a binary task (task\_1) but struggles with
-classifying melanoma out of the 3 possible classes, e.i.
-melanoma,seborrheic keratosis, and nevus (task\_2). This is concerning
+classifying melanoma out of the 3 possible classes, i.w.
+melanoma, seborrheic keratosis, and nevus (task\_2). This is concerning
 considering malignant lesions pose the greatest harm to health, and
-could lead to peoples death if missed. The reasons for this discrepancy
-is most likely due to the abudance of pictures of benign lesions
+may results in death if missed. The reasons for this discrepancy
+are most likely due to the abudance of pictures of benign lesions
 compared to malignant lesions in the training data. There are only 372
 pictures of melanoma in the training data, while there are over 1500
 pictures of benign lesions (nevus and seborrheic keratosis). This most
@@ -535,14 +544,13 @@ EfficientNet model, however it lead to a drastic drop in accuracy. This
 leads me to believe that the best solution would be to implement more
 data into the experiment. There are millions of labelled images of
 Melanoma available from sources such as the \emph{Kaggle SIIM-ISIC
-Melanoma Classification} competition\textsuperscript{\hyperlink{[9]}{[9]}} , however my current
+Melanoma Classification} competition\textsuperscript{\hyperlink{[9]}{[9]}};  however my current
 equipment setup is not powerful enough to deal with that amount of data.
-This will be something I will have to look to implement in the future,
-when I have more resources available.
+This will be something I will have to look to implement in the future, when I have more resources available.
 
 
 \begin{figure}
-  \includegraphics[width=12.5cm]{images/eff_net_base_roc.png}
+  \includegraphics[width=10cm]{images/eff_net_base_roc.png}
   \caption{ROC Curve Generated by the Model (Task\_1 = classfying benign lesions
 from melanoma as a binary task, Task\_2 = classifying melanoma out of
 the 3 possible classes, melanoma, nevus, and seborrheic keratosis).}
@@ -557,19 +565,19 @@ the 3 possible classes, melanoma, nevus, and seborrheic keratosis).
 \hypertarget{confusion-matrix}{%
 \subsubsection{Confusion Matrix}\label{confusion-matrix}}
 
-A confusion matrix represents the amount of correctly labelled postives
+\qquad A confusion matrix represents the amount of correctly labelled postives
 vs correctly labelled negatives vs incorrectly labelled positives vs
 incorrectly labelled negatives. Positives in this case means the patient
-has melanoma and negative means the patient has a benign lesion. I made
-the threshold for considering a skin lesion melanoma 30\% (as in if the
-model believes with a 30\% probability the skin lesion is melanoma , it
+has melanoma and negative means the patient has a benign lesion. I set
+the threshold for considering a skin lesion to be melanoma at 30\% (as in if the
+model believes with a 30\% probability the skin lesion is melanoma, it
 counts it as positive). I chose this because in general, it is safer to
 misdiagnose someone with melanoma, then to miss a melanoma diagnosis
 completly, as the latter could lead to death while the former might
-slightly inconvenience someone. It is better to be safe then sorry. With
-those parameters, we received 71\% correctly labelled positives (as
-melanoma) and 81\% correct labelled negatives (as benign skin lesions).
-This is quite a good results, and is higher then the average
+slightly inconvenience someone.  With
+those parameters, I received 71\% correctly labelled positives (correctly labelled as
+melanoma) and 81\% correct labelled negatives (correctly labelled as benign skin lesions).
+These are good results,exceeding the average
 dermatologist rate of 66\%\textsuperscript{\hyperlink{[1]}{[1]}}.
 
 
@@ -588,12 +596,12 @@ Lesions.
     \hypertarget{reflection}{%
 \section{Reflection}\label{reflection}}
 
-    This project was an extremely rewarding experience. It allowed me to see
+\qquad This project was an extremely rewarding experience. It allowed me to see
 the potential impact that Neural Networks and AI could have on the
 future. Digitilizing patient care could help speed up the process, make
 it more accurate, reduce the costs, and make top quality healthcare
-accesible to everyone. While the results of my trained model were not
-perfect, they are certainly promising, and I am extremly excited to
+accessible to everyone. While the results of my trained model were not
+perfect, they are certainly promising, and I am extremely excited to
 continue working with Machine Learning. My passion is AI, and I will
 continue working and improving my skills to help make the world a better place.
 
@@ -642,7 +650,7 @@ Optimization. arXiv:1412.6980v9 {[}cs.LG{]}}
 your machine learning project. Retrieved July 20, 2020, from
 https://medium.com/octavian-ai/which-optimizer-and-learning-rate-should-i-use-for-deep-learning-5acb418f9b2cs.LG}
 
-\hypertarget{[9]}{[9] {[}9{]}SIIM-ISIC Melanoma Classification. (2020). Retrieved July 20,
+\hypertarget{[9]}{{[}9{]}SIIM-ISIC Melanoma Classification. (2020). Retrieved July 20,
 2020, from https://www.kaggle.com/c/siim-isic-melanoma-classification}
 
 
